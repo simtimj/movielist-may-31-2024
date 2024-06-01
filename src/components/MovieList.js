@@ -1,19 +1,34 @@
 
 
 let MovieList = (props) => {
-  let {movies} = props;
+  let {movies, searchBarText} = props;
 
   console.log(1, movies)
 
-  return (
-    <div className="movielist">
-      {movies.map(movie => {
-        return <MovieEntry 
-          title = {movie.title}
-        />
-      })}
-    </div>
-  )
+
+
+  let noMovies = () => `No movies containing "${searchBarText}"`
+
+  if (movies.length) {
+    return (
+      <div className="movielist">
+        {movies.map(movie => {
+          return <MovieEntry 
+            title = {movie.title}
+          />
+        })}
+      </div>
+    )
+  } else {
+    return (
+      <div className="movielist">
+        {noMovies()}
+      </div>
+    )
+  }
+
+
+  
 };
 
 
