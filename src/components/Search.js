@@ -1,15 +1,6 @@
 
-
-
 let Searchbar = (props) => {
   let {setSearchBarText} = props;
-
-  // console.log(0, setSearchBarText)
-  let movies;
-
-
-
-
   return (
     <div className="searchbar">
       <input

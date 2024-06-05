@@ -29,11 +29,52 @@
 }
 
 
-.movieEntry {
+/* .movieEntry {
   border: 0.1rem solid rgb(170, 165, 165);
-  margin-top: 1px
+  margin-top: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+  align-items: center;
+} */
+
+.movieEntrySimple {
+  border: 0.1rem solid rgb(170, 165, 165);
+  margin-top: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+  align-items: center;
 }
 
-.movieEntry p {
+p {
   margin-left: 10px;
+}
+
+.movieEntryDetailed {
+  border: 0.1rem solid rgb(170, 165, 165);
+  margin-top: 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .title {
+  border: 0.1rem solid rgb(170, 165, 165);
+  margin-top: 1px;
+  display: flex;
+  flex-direction: column;
+} */
+
+.movieWatchedButton {
+  margin-right: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding-left: 10px;
 }
