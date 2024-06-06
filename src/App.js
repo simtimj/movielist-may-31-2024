@@ -19,45 +19,22 @@ let App = () => {
   console.log("movies:", movies)
 
   useEffect(() => {
-    let newMovies = [];
-    const url = 'https://api.themoviedb.org/3/trending/all/day?language=en-US';
-    const options = {
-      method: 'GET',
+    fetch('http://localhost:8080/movies', {
       headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjQ3ZGI5NWQwYmYzOTM0NWFkMWE1MGFlNjM4MGVlMCIsInN1YiI6IjVkMDQ1Y2ExMGUwYTI2MGIwYWNkOGViZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mGWq2Eb1C6io4rgUzar8EJiXpGJj-ue6YT7_WB2alSY'
+        Accept: "application/json"
       }
-    };
-
-    fetch(url, options)
-      .then(res => res.json())
+    })
+    .then(res => res.json())
       .then(json => {
-        // console.log(11111, json)
-          for (let i = 0; i < json.results.length; i++) {
-            let movie = json.results[i];
-            // console.log("movie:", movie)
-  
-            let parsedMovie = {
-              key: i,
-              title: movie.original_title || movie.original_name,
-              watched: false,
-              year: movie.release_date || movie.first_air_date,
-              runtime: movie.popularity,
-              metascore: movie.vote_average,
-              imdbRating: movie.vote_count 
-            };
-            newMovies.push(parsedMovie);
-          }
-          setMovies(newMovies)
-          console.log("new movies:", newMovies)
-          setFilteredMovies(newMovies)
-          
+        console.log("json", json)
+        setMovies(json);
       })
-      .catch(err => console.error('error:' + err));
+
+
   }, [])   // array here will contain things for useEffect to watch for changes
 
 
-    let searchFilteredMovies = () => { 
+    let searchFilteredMovies = (movies) => { 
       console.log('App.js, movies:', movies);
       return movies.filter(movie => {
         if (movie.title.toLowerCase().includes(searchBarText.toLowerCase())) {
@@ -89,7 +66,7 @@ let App = () => {
         setSearchBarText = {setSearchBarText}
       />
       <MovieList 
-        movies = {filteredMovies}
+        movies = {searchFilteredMovies(movies)}
         setMovies = {setMovies}
         searchBarText = {searchBarText}
       />

@@ -26,7 +26,7 @@ let MovieList = (props) => {
 
 
   if (movies.length) {
-    console.log("filteredMovies:", filteredMovies)
+    // console.log("filteredMovies:", filteredMovies)
     return (
       <div className="movielist">
         <button
@@ -45,7 +45,7 @@ let MovieList = (props) => {
         </button>
         {console.log("movies:", movies)}
         {console.log("filteredMovies:", filteredMovies)}
-        {filteredMovies.map(movie => {
+        {movies.map(movie => {
           console.log(88)
           console.log(555, movie)
           return <MovieEntry 
